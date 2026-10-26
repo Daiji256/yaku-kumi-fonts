@@ -1,0 +1,98 @@
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-thin.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-thin.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-thin.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-extra-light.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-extra-light.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-extra-light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-light.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-light.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-regular.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-regular.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-medium.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-medium.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-semi-bold.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-semi-bold.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-semi-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-bold.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-bold.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-extra-bold.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-extra-bold.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-extra-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yaku Kumi Sans";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src:
+    url("../fonts/yaku-kumi-sans-black.woff2") format("woff2"),
+    url("../fonts/yaku-kumi-sans-black.woff") format("woff"),
+    url("../fonts/yaku-kumi-sans-black.ttf") format("truetype");
+}
