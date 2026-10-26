@@ -24,7 +24,9 @@ from fontTools.subset import Options, Subsetter
 from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont
 
-YAKUMONO_CHARS = "、。，．・：；（）「」『』［］｛｝【】〈〉《》〔〕〝〟　"
+YAKUMONO_CHARS = (
+    "、。，．・：；（）｟｠「」『』［］〚〛｛｝【】〖〗〈〉《》〔〕〘〙〝〟　"
+)
 
 SOURCES_DIR = Path("tmp/sources")
 OUTPUT_DIR = Path("fonts")
@@ -155,8 +157,8 @@ def normalize_font_metrics(src_path: Path, dest_path: Path) -> Path:
     hmtx = font["hmtx"]
     glyf = font["glyf"]
 
-    left_aligned = set("、。，．・：；）」』］｝】〉》〕〟")
-    right_aligned = set("（「『［｛【〈《〔〝")
+    left_aligned = set("、。，．・：；）」』］｝】〉》〕｠〛〗〙〟")
+    right_aligned = set("（「『［｛【〈《〔｟〚〖〘〝")
 
     def shift_fn(delta: int, char: str) -> int:
         if char in left_aligned:

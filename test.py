@@ -20,7 +20,9 @@ from fontTools.misc import timeTools
 from fontTools.ttLib import TTFont
 from PIL import Image, ImageChops, ImageDraw, ImageFont
 
-YAKUMONO_CHARS = "、。，．・：；（）「」『』［］｛｝【】〈〉《》〔〕〝〟　"
+YAKUMONO_CHARS = (
+    "、。，．・：；（）｟｠「」『』［］〚〛｛｝【】〖〗〈〉《》〔〕〘〙〝〟　"
+)
 YAKUMONO_SET = set(YAKUMONO_CHARS)
 EXPECTED_CHAR_CODES = {ord(c) for c in YAKUMONO_CHARS}
 
@@ -36,9 +38,9 @@ BUILD_TIMESTAMP = timeTools.timestampSinceEpoch(
 )
 
 SIZE_RANGES = {
-    ".ttf": (8000, 15000),
-    ".woff": (5000, 10000),
-    ".woff2": (3500, 7000),
+    ".ttf": (8000, 16000),
+    ".woff": (5000, 11000),
+    ".woff2": (3500, 8000),
 }
 
 FONTS_INFO: list[tuple[str, str, str]] = [
@@ -130,7 +132,7 @@ FONTS_INFO: list[tuple[str, str, str]] = [
 ]
 
 SAMPLE_LINE1 = "「『吾輩は猫である』、名前はまだ無い。」"
-SAMPLE_LINE2 = "【夏目漱石】　これは〝美しい〟文字組み。（注：テスト）"
+SAMPLE_LINE2 = "〚夏目漱石〛　これは〝美しい〟文字組み。（注：テスト）"
 
 
 def find_source(filename: str) -> Path:
