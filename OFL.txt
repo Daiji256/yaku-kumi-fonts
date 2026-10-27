@@ -33,7 +33,7 @@ Holder(s) under this license and clearly marked as such. This may
 include source files, build scripts and documentation.
 
 "Reserved Font Name" refers to any names specified as such after the
-copyright notice(s).
+copyright statement(s).
 
 "Original Version" refers to the collection of Font Software components
 as distributed by the Copyright Holder(s).
@@ -63,7 +63,7 @@ in the appropriate machine-readable metadata fields within text or
 binary files as long as those fields can be easily viewed by the user.
 
 3) No Modified Version of the Font Software may use the Reserved Font
-Name(s) unless prominent written permission is granted by the
+Name(s) unless explicit written permission is granted by the
 corresponding Copyright Holder. This restriction only applies to the
 primary font name as presented to the users.
 
@@ -85,7 +85,7 @@ not met.
 
 DISCLAIMER
 THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
 OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
 COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,

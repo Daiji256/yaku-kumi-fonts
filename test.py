@@ -10,9 +10,21 @@
 
 from __future__ import annotations
 
+import os
+import sys
+
+# Ensure macOS dynamic loader finds Homebrew libraqm for Pillow
+if sys.platform == "darwin" and "/opt/homebrew/lib" not in os.environ.get(
+    "DYLD_FALLBACK_LIBRARY_PATH", ""
+):
+    current = os.environ.get("DYLD_FALLBACK_LIBRARY_PATH", "")
+    os.environ["DYLD_FALLBACK_LIBRARY_PATH"] = (
+        f"/opt/homebrew/lib:{current}" if current else "/opt/homebrew/lib"
+    )
+    os.execv(sys.executable, [sys.executable, *sys.argv])
+
 import itertools
 import re
-import sys
 from datetime import datetime
 from pathlib import Path
 
