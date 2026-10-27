@@ -217,6 +217,33 @@ def test_metadata_validity() -> None:
         assert font["head"].modified == BUILD_TIMESTAMP
         assert font["OS/2"].achVendID == "YKMI"
 
+        # STAT and fvar should NOT be present in static subset fonts
+        assert "STAT" not in font, f"[{prefix}] STAT table should not be present"
+        assert "fvar" not in font, f"[{prefix}] fvar table should not be present"
+
+        # Check OS/2 weight class and fsSelection / head macStyle
+        is_bold = display_name.split()[-1] == "Bold"
+        if is_bold:
+            assert font["OS/2"].fsSelection & 0x20, (
+                f"[{prefix}] Bold bit (0x20) not set in fsSelection"
+            )
+            assert not (font["OS/2"].fsSelection & 0x40), (
+                f"[{prefix}] Regular bit (0x40) unexpectedly set in Bold fsSelection"
+            )
+            assert font["head"].macStyle & 0x01, (
+                f"[{prefix}] Bold bit (0x01) not set in head.macStyle"
+            )
+        else:
+            assert font["OS/2"].fsSelection & 0x40, (
+                f"[{prefix}] Regular bit (0x40) not set in fsSelection"
+            )
+            assert not (font["OS/2"].fsSelection & 0x20), (
+                f"[{prefix}] Bold bit (0x20) unexpectedly set in non-Bold fsSelection"
+            )
+            assert not (font["head"].macStyle & 0x01), (
+                f"[{prefix}] Bold bit (0x01) unexpectedly set in non-Bold head.macStyle"
+            )
+
         gpos_features = {
             r.FeatureTag for r in font["GPOS"].table.FeatureList.FeatureRecord
         }
@@ -232,6 +259,13 @@ def test_metadata_validity() -> None:
             for r in font["name"].names
             if r.platformID == 3 and r.langID == 1033
         }
+        assert 25 not in names, f"[{prefix}] nameID 25 leaked in static font"
+        for nid, val in names.items():
+            if nid in (1, 2, 3, 4, 6, 16, 17):
+                assert "Noto" not in val, (
+                    f"[{prefix}] 'Noto' leaked in nameID {nid}: {val}"
+                )
+
         assert "Copyright 2026 Daiji256." in names[0]
         assert names[1].startswith("Yaku Kumi")
         assert names[3] == f"3.000;YKMI;{names[6]}"
@@ -246,7 +280,7 @@ def test_metadata_validity() -> None:
             assert names[16].startswith("Yaku Kumi")
 
     print(
-        "  Metadata verified: Version 3.000, Vendor YKMI, proper copyright, and complete credits."
+        "  Metadata verified: Version 3.000, Vendor YKMI, proper fsSelection/STAT removal, copyright, and complete credits."
     )
 
 
@@ -336,6 +370,7 @@ def generate_specimen_card(
 
     draw.text((pad_x, 20), display_name, font=f_n_title, fill=c_text)
     draw.line([(pad_x, 48), (w - pad_x, 48)], fill=c_line, width=1)
+    draw.line([(pad_x, 156), (w - pad_x, 156)], fill=c_line, width=1)
 
     for label, enable_chws, label_y in [
         ("chws OFF", False, 64),

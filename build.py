@@ -115,6 +115,13 @@ def update_metadata(
     font["OS/2"].achVendID = VENDOR_ID
     font["OS/2"].usWeightClass = weight_value
 
+    if weight_display == "Bold":
+        font["OS/2"].fsSelection = (font["OS/2"].fsSelection & ~0x40) | 0x20
+        font["head"].macStyle |= 0x01
+    else:
+        font["OS/2"].fsSelection = (font["OS/2"].fsSelection & ~0x20) | 0x40
+        font["head"].macStyle &= ~0x01
+
     name_table = font["name"]
 
     ps_family = family_name.replace(" ", "")
@@ -124,10 +131,12 @@ def update_metadata(
     win_subfamily = "Bold" if weight_display == "Bold" else "Regular"
     description = (
         f"{family_name} is a subset web font for Japanese punctuation marks based on "
-        f"{base_family}, with OpenType chws features added."
+        f"{base_family}, with OpenType chws features retained and optimized."
     )
 
-    name_table.names = [r for r in name_table.names if r.nameID < 256]
+    name_table.names = [
+        r for r in name_table.names if r.nameID < 256 and r.nameID != 25
+    ]
 
     for record in name_table.names:
         nid = record.nameID
@@ -156,6 +165,16 @@ def normalize_font_metrics(src_path: Path, dest_path: Path) -> Path:
     cmap = font.getBestCmap()
     hmtx = font["hmtx"]
     glyf = font["glyf"]
+
+    needs_normalization = False
+    for c in YAKUMONO_CHARS:
+        code = ord(c)
+        if code in cmap and hmtx[cmap[code]][0] != 1000:
+            needs_normalization = True
+            break
+
+    if not needs_normalization:
+        return src_path
 
     left_aligned = set("、。，．・：；）」』］｝】〉》〕｠〛〗〙〟")
     right_aligned = set("（「『［｛【〈《〔｟〚〖〘〝")
@@ -226,6 +245,10 @@ def subset_and_export(
         weight_value=weight_value,
         weight_display=weight_display,
     )
+
+    for tbl in ("STAT", "fvar"):
+        if tbl in font:
+            del font[tbl]
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     for ext, flavor in [(".ttf", None), (".woff", "woff"), (".woff2", "woff2")]:

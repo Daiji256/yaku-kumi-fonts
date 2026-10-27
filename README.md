@@ -1,6 +1,6 @@
 # yaku-kumi-fonts
 
-[![](https://data.jsdelivr.com/v1/package/gh/daiji256/yaku-kumi-fonts/badge)](https://www.jsdelivr.com/package/gh/daiji256/yaku-kumi-fonts)
+[![](https://data.jsdelivr.com/v1/stats/packages/gh/daiji256/yaku-kumi-fonts/badge)](https://www.jsdelivr.com/package/gh/daiji256/yaku-kumi-fonts)
 
 Noto CJK フォントシリーズ（Noto Sans JP, Noto Serif JP）の約物（句読点・括弧類など 36 文字）をサブセット化し、OpenType `chws`（約物詰め）機能を保持・最適化した Web フォントです。
 

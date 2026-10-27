@@ -1,4 +1,5 @@
 Copyright 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'.
+Copyright 2017-2024 Adobe (http://www.adobe.com/).
 Copyright 2026 Daiji256 (https://github.com/Daiji256/yaku-kumi-fonts)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
